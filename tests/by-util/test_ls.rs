@@ -564,7 +564,7 @@ fn test_ls_order_birthtime() {
     let at = &scene.fixtures;
 
     at.touch("test-birthtime-1");
-    std::thread::sleep(std::time::Duration::from_millis(1));
+    std::thread::sleep(std::time::Duration::from_millis(if cfg!(not(windows)) {1} else {10}));
     at.touch("test-birthtime-2");
     at.touch("test-birthtime-1");
 
